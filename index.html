@@ -29,7 +29,9 @@ html{
 .nav .links{
     display: flex;
     column-gap: 3rem;
-    padding: 1.5rem;
+    padding: 1.5rem 0rem;
+    margin-left: 32rem;
+
 
 }
 .nav .links li{
@@ -132,18 +134,23 @@ button:hover{
 .nav .links{
     position: fixed;
     top: 0;
-    right: -200px;
+    right: -400px;
     flex-direction: column;
     width: 150px;
     height: 100vh;
     text-align: center;
     align-items: flex-start;
-    background-color:#c5d1d6 ;
-    padding: 1rem;
-    margin-top: 7%;
+    background-color:#f4f4f4 ;
+    padding: 2rem;
+    margin-top: 0%;
+    transition: 0.5s;
+    box-shadow: 0 -8px 32px 0 rgba(0,0,0,0.5);
 }
-.nav .links .active{
-    right: 0px;
+.nav .links li{
+    margin-top: 5%;
+}
+body.sidebar-active .nav .links {
+    right: 0;
 }
 .nav .links a{
     padding: 1rem;
@@ -189,7 +196,15 @@ button:hover{
     box-shadow: 0 -8px 32px 0 rgba(0,0,0,0.5);
     padding: 0rem 2rem;
 }
+#close{
+    position:absolute ;
+    top: -0.5rem;
+    left: 0;
+    padding: 1rem 1rem;
+    font-size: 2rem;
 }
+}
+
 
 </style>
 </head>
@@ -202,10 +217,9 @@ button:hover{
                     <li><a href="#">About</a></li>
                     <li><a href="#">Skill</a></li>
                     <li><a href="#">Contact</a></li>
+                    <i class="ri-close-line" id="close"></i>
                 </ul>
-                <div id="b">
                     <i class="ri-menu-line" id="bar"></i>
-                </div>
         </nav>
         
     </header>
@@ -230,14 +244,21 @@ button:hover{
     </div>
 </div>
 <script>
-   const bar = document.getElementById('bar'); // Change 'bar' to 'b'
-    const link = document.querySelector('.nav .links'); // Update the class selector
+    const bar = document.getElementById('bar');
+    const close = document.getElementById('close');
 
-    if (bar && link) {
-        bar.addEventListener('click', () => {
-            link.classList.toggle('active');
-        });
-    }
+const links = document.querySelector('.links');
+
+if (bar) {
+    bar.addEventListener('click', () => {
+        document.body.classList.toggle('sidebar-active');
+    });
+}
+if(close){
+    close.addEventListener('click', () => {
+        document.body.classList.toggle('sidebar-active');
+});
+}
  </script>
 </body>
 </html>
